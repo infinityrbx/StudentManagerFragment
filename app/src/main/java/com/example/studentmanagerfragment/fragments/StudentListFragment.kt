@@ -28,14 +28,11 @@ class StudentListFragment : Fragment() {
         adapter = StudentListAdapter(requireContext(), studentViewModel.students.value ?: mutableListOf())
         listView.adapter = adapter
 
-        // Register the ListView for the context menu
         registerForContextMenu(listView)
 
-        // Observe changes to the students list
         studentViewModel.students.observe(viewLifecycleOwner) { updatedList ->
             adapter.updateData(updatedList)
         }
-        // Remove the normal click listener (optional: handle in another way if needed)
         listView.onItemClickListener = null
         return view
     }
@@ -85,9 +82,9 @@ class StudentListFragment : Fragment() {
             }
             R.id.context_remove -> {
                 studentViewModel.students.value?.let {
-                    val updatedList = it.toMutableList() // Create a mutable copy
+                    val updatedList = it.toMutableList()
                     updatedList.removeAt(info.position)
-                    studentViewModel.students.value = updatedList // Update LiveData
+                    studentViewModel.students.value = updatedList
                 }
                 true
             }

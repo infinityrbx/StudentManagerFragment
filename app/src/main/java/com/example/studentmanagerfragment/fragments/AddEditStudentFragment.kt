@@ -49,7 +49,6 @@ class AddEditStudentFragment : Fragment() {
             btnSave.text = "Add Student"
         }
 
-        // Populate fields if editing
         editName.setText(studentName)
         editId.setText(studentId)
 
@@ -60,7 +59,7 @@ class AddEditStudentFragment : Fragment() {
             if (updatedName.isNotEmpty() && updatedId.isNotEmpty()) {
                 val student = StudentModel(updatedName, updatedId)
                 studentViewModel.saveStudent(student, position)
-                findNavController().navigateUp() // Navigate back
+                findNavController().navigateUp()
             }
         }
         return view

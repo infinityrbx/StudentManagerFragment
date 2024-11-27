@@ -18,10 +18,8 @@ class StudentViewModel : ViewModel() {
         val currentList = students.value ?: mutableListOf()
 
         if (position != null && position >= 0) {
-            // Edit existing student
             currentList[position] = student
         } else {
-            // Add new student
             currentList.add(student)
         }
 
